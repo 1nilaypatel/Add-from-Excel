@@ -33,8 +33,14 @@ export default function Home() {
         }
       });
 
-      setSubmissionStatus('success');
+      if(response.success === 200){
+        setSubmissionStatus('success');
+      }else{
+        console.error('Error submitting the file', error);
+        setSubmissionStatus('error');
+      }
       setIsSubmitting(false);
+      
     } catch (error) {
       console.error('Error submitting file:', error);
       setSubmissionStatus('error');

@@ -7,11 +7,9 @@ import path from 'path';
 export const getCandidates = async (req, res, next) => {
   try {
     const candidates = await Candidate.find();
-    res.json(candidates);
+    res.status(200).json(candidates);
   } catch (err) {
-    res.status(500).json({
-      message: err.message
-    });
+    res.status(500).json({message: err.message});
   }
 };
 
@@ -30,7 +28,7 @@ const upload = multer({
 
 export const handleUpload = upload.single("xlsx");
 
-export const uploadCandidates = async (req, res, next) => {
+export const uploadCandidates = async (req, res) => {
   try {
     let path = req.file.path;
     var workbook = XLSX.readFile(path);
