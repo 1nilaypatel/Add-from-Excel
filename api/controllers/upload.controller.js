@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
     cb(null, path.join('uploads'));
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
+    cb(null, file.originalname);
   }
 });
 
@@ -69,7 +69,7 @@ export const uploadCandidates = async (req, res) => {
         message += (duplicateCount === 1) ? '  1 duplicate!' : `  ${duplicateCount} duplicates!`;
 
         console.log(`${count} unique items saved successfully!`);
-        return res.status(201).json({
+        return res.status(200).json({
           success: true,
           message: message
         });
