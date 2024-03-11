@@ -19,6 +19,12 @@ const candidateSchema = new mongoose.Schema({
   'Work Experience': {
     type: String
   },
+  'Year':{
+    type: Number
+  },
+  'Month':{
+    type: Number
+  },
   'Resume Title': {
     type: String
   },

@@ -55,6 +55,13 @@ export const uploadCandidates = async (req, res) => {
           return callback();
         }
 
+        // item['Date of Birth'] = new Date(item['Date of Birth']);
+        // item['Mobile No.'] = parseInt(item['Mobile No.']);
+
+        const workExperience = item['Work Experience'].split(' ');
+        item.Year = workExperience[0];
+        item.Month = workExperience[2];
+
         const candidate = new Candidate(item);
         candidate.save(function(err) {
           if (!err) count++;
